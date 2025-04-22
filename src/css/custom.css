@@ -1,0 +1,131 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+/* :root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+} */
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* /* custom.css */
+/* src/css/custom.css */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --ifm-color-primary: #1A73E8;
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-size-base: 14px;
+  --ifm-heading-font-family: 'Inter', sans-serif;
+}
+
+/* Dark mode overrides */
+html[data-theme='dark'] {
+  --ifm-color-primary: #90caf9;
+}
+
+/* Navbar */
+.navbar__title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Sidebar */
+.menu__link {
+  font-size: 14px;
+}
+
+/* Hero section */
+.hero__title {
+  font-size: 2.3rem;
+}
+
+/* Markdown typography */
+.markdown h1 {
+  font-size: 1.7rem;
+}
+
+.markdown h2 {
+  font-size: 1.4rem;
+}
+
+.markdown p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* API Docs Layout */
+.api-docs-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+}
+
+.api-docs-left {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.api-docs-right {
+  width: 50%;
+  min-width: 50%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.request-example {
+  width: 100%;
+  margin: 0;
+}
+
+/* Full-width layout for accounts API page
+.docs-wrapper.docPage--api-reference-accounts .container,
+.docs-wrapper.docPage--api-reference-accounts .main-wrapper {
+  max-width: 100% !important;
+  padding: 0 2rem;
+}
+
+.docs-wrapper.docPage--api-reference-accounts .row {
+  margin-left: 0;
+  margin-right: 0;
+} */
+ /* Full-width layout for all doc pages */
+.docs-wrapper .container,
+.docs-wrapper .main-wrapper {
+  max-width: 100% !important;
+  padding: 0 2rem;
+}
+
+.docs-wrapper .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .api-docs-container {
+    flex-direction: column;
+  }
+
+  .api-docs-right {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .docs-wrapper.docPage--api-reference-accounts .container {
+    padding: 0 1rem;
+  }
+} 
