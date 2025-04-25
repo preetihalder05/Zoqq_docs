@@ -3,6 +3,7 @@ id: payout
 title: Payout
 hide_table_of_contents: true
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -15,7 +16,6 @@ This API retrieves the required schema for creating a beneficiary based on trans
 ```
 GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
 ```
-
 
   </TabItem>
 </Tabs>
@@ -77,7 +77,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "local_clearing_system": "ACH",
         "transfer_method": "LOCAL"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -85,14 +85,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/beneficiary?account_currency=USD&bank_country_code=US&entity_type=PERSONAL&local_clearing_system=ACH&transfer_method=LOCAL"))
@@ -107,15 +107,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -159,10 +159,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -170,10 +170,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Supported">
-    
+
     ```json
     {
       "code": 404,
@@ -181,10 +181,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Corridor not supported"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -198,9 +198,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       ]
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
@@ -213,7 +214,6 @@ This API creates a new beneficiary for transfers based on the required schema.
 ```
 POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
 ```
-
 
   </TabItem>
 </Tabs>
@@ -289,7 +289,7 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
     import json
 
     url = "{{baseUrl}}/zoqq/api/v1/transfer/beneficiary"
-    
+
     payload = {
         "account_number": "123456789",
         "routing_number": "026073150",
@@ -300,7 +300,7 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "entity_type": "PERSONAL",
         "transfer_method": "LOCAL"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -309,14 +309,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "Content-Type": "application/json",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/beneficiary"))
@@ -332,15 +332,15 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -356,10 +356,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -367,10 +367,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -384,10 +384,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       ]
     }
     ```
-    
+
       </TabItem>
       <TabItem value="409" label="409: Conflict">
-    
+
     ```json
     {
       "code": 409,
@@ -395,14 +395,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Beneficiary already exists"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-
-# Validate Create Beneficiary
+## Validate Create Beneficiary
 
 This API validates beneficiary details before creation without actually creating the beneficiary.
 
@@ -486,7 +486,7 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
     import json
 
     url = "{{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary"
-    
+
     payload = {
         "account_number": "123456789",
         "routing_number": "026073150",
@@ -497,7 +497,7 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
         "entity_type": "PERSONAL",
         "transfer_method": "LOCAL"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -506,14 +506,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
         "Content-Type": "application/json",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary"))
@@ -529,15 +529,15 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -546,10 +546,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
       "data": []
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -557,10 +557,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -578,10 +578,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
       ]
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -589,15 +589,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/validatebeneficiary
       "message": "Bank not found for given routing number"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-
-
-# Update Beneficiary
+## Update Beneficiary
 
 This API updates specific fields of an existing beneficiary account.
 
@@ -606,7 +605,6 @@ This API updates specific fields of an existing beneficiary account.
 ```
 PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
 ```
-
 
   </TabItem>
 </Tabs>
@@ -634,7 +632,7 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
     | beneficiary_id | string | Yes | ID of the beneficiary to update |
 
     <h3>Request Body</h3>
-    
+
     <p>Include only the fields that need updating, following the same schema as beneficiary creation:</p>
 
     ```json
@@ -678,13 +676,13 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
 
     url = "{{baseUrl}}/zoqq/api/v1/transfer/beneficiary"
     params = {"beneficiary_id": "beneficiary_123"}
-    
+
     payload = {
         "full_name": "Updated Name",
         "account_number": "987654321",
         "account_type": "SAVINGS"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -693,14 +691,14 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "Content-Type": "application/json",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.patch(url, headers=headers, params=params, data=json.dumps(payload))
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/beneficiary?beneficiary_id=beneficiary_123"))
@@ -716,15 +714,15 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -733,10 +731,10 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "data": []
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -744,10 +742,10 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -761,10 +759,10 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       ]
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -772,14 +770,14 @@ PATCH {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Beneficiary not found"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-
-# Get Beneficiary by ID
+## Get Beneficiary by ID
 
 This API retrieves detailed information about a specific beneficiary.
 
@@ -788,7 +786,6 @@ This API retrieves detailed information about a specific beneficiary.
 ```
 GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
 ```
-
 
   </TabItem>
 </Tabs>
@@ -842,7 +839,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
     params = {
         "beneficiary_id": "beneficiary_123"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -850,14 +847,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/beneficiary?beneficiary_id=beneficiary_123"))
@@ -872,15 +869,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -905,10 +902,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -916,10 +913,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -927,10 +924,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Beneficiary not found"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="403" label="403: Forbidden">
-    
+
     ```json
     {
       "code": 403,
@@ -938,18 +935,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiary
       "message": "Not authorized to view this beneficiary"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-
-
-
-
-
-# Get Beneficiary List
+## Get Beneficiary List
 
 This API retrieves a list of all beneficiaries associated with the authenticated user.
 
@@ -1015,7 +1008,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
         "limit": 20,
         "offset": 0
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -1023,14 +1016,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist?limit=20&offset=0"))
@@ -1045,15 +1038,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -1092,10 +1085,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -1103,10 +1096,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
       "message": "Something went wrong"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -1114,10 +1107,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
       "message": "No beneficiaries found"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="429" label="429: Rate Limited">
-    
+
     ```json
     {
       "code": 429,
@@ -1125,8 +1118,9 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/beneficiarylist
       "message": "Too many requests"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>

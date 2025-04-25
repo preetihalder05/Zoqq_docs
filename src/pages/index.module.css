@@ -10,6 +10,40 @@
   overflow: hidden;
 }
 
+.cardLink {
+  display: block;
+  color: inherit;
+}
+
+.cardLink:hover {
+  text-decoration: none;
+}
+
+.cardLink .card {
+  transition: all 0.3s ease;
+}
+
+.cardLink:hover .card {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeaderContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cardTitle {
+  margin: 0;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

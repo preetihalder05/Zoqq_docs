@@ -3,12 +3,11 @@ id: accounts
 title: Accounts
 hide_table_of_contents: true
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Accounts
-
-
 
 ## Create Account
 
@@ -269,8 +268,6 @@ POST {{baseUrl}}/zoqq/api/v1/accounts
   </div>
 </div>
 
-
-
 ## Get Account
 
 This API allows you to retrieve all accounts associated with a user in the system.
@@ -499,7 +496,7 @@ GET {{baseUrl}}/zoqq/api/v1/accounts
       </TabItem>
     </Tabs>
   </div>
-</div>   
+</div>
 
 ## Get Balance
 
@@ -709,8 +706,7 @@ GET {{baseUrl}}/zoqq/api/v1/accounts/balance
   </div>
 </div>
 
-
-# Get Account Transactions
+## Get Account Transactions
 
 This API retrieves a list of transactions for the authenticated user's account with filtering capabilities.
 
@@ -719,7 +715,6 @@ This API retrieves a list of transactions for the authenticated user's account w
 ```
 GET {{baseUrl}}/zoqq/api/v1/accounts/transactions
 ```
-
 
   </TabItem>
 </Tabs>

@@ -10,7 +10,7 @@ module.exports = {
 
   themeConfig: {
     navbar: {
-      title: 'ZOQQ Docs',
+      title: '',
       logo: {
         alt: 'Zoqq Logo',
         src: 'https://stylopay-sandbox-ohio-dev-dump-public.s3.amazonaws.com/zoqq.jpg',

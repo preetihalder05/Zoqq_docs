@@ -1,12 +1,15 @@
 ---
-id: foreign exchange
+id: foreignExchange
 title: Foreign Exchange
 hide_table_of_contents: true
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Generate Quote
+# Foreign Exchange
+
+## Generate Quote
 
 This API generates a quote for currency conversion or payout transactions.
 
@@ -15,7 +18,6 @@ This API generates a quote for currency conversion or payout transactions.
 ```
 GET {{baseUrl}}/zoqq/api/v1/transfer/quote
 ```
-
 
   </TabItem>
 </Tabs>
@@ -82,7 +84,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
         "destination_currencycode": "SGD",
         "source_amount": 100
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -90,14 +92,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/quote?quote_type=payout&lock_period=5_mins&conversion_schedule=immediate&source_currencycode=USD&destination_currencycode=SGD&source_amount=100"))
@@ -112,15 +114,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -142,10 +144,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -153,10 +155,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
       "message": "Reason of the error"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -170,10 +172,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
       ]
     }
     ```
-    
+
       </TabItem>
       <TabItem value="429" label="429: Rate Limited">
-    
+
     ```json
     {
       "code": 429,
@@ -181,13 +183,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quote
       "message": "Too many quote requests"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-# Fetch Quote Details
+## Fetch Quote Details
 
 This API retrieves details of a previously generated quote.
 
@@ -196,7 +199,6 @@ This API retrieves details of a previously generated quote.
 ```
 GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
 ```
-
 
   </TabItem>
 </Tabs>
@@ -250,7 +252,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
     params = {
         "quote_id": "quote_6wBIHIRhPElAHfcgVaDFZs"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -258,14 +260,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/quotedetails?quote_id=quote_6wBIHIRhPElAHfcgVaDFZs"))
@@ -280,15 +282,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -309,10 +311,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -320,10 +322,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
       "message": "Invalid quote ID"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -331,10 +333,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
       "message": "Quote not found"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="410" label="410: Expired">
-    
+
     ```json
     {
       "code": 410,
@@ -342,14 +344,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/quotedetails
       "message": "Quote has expired"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-
-# Create Conversion
+## Create Conversion
 
 This API executes a currency conversion based on a previously generated quote.
 
@@ -358,7 +360,6 @@ This API executes a currency conversion based on a previously generated quote.
 ```
 POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
 ```
-
 
   </TabItem>
 </Tabs>
@@ -421,13 +422,13 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
     import json
 
     url = "{{baseUrl}}/zoqq/api/v1/transfer/conversion"
-    
+
     payload = {
         "quote_id": "quote_6WRfj2CkYaRSuiPskK3kj3",
         "source_amount": 100,
         "destination_amount": 132.52
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -436,14 +437,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
         "Content-Type": "application/json",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/conversion"))
@@ -459,15 +460,15 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -488,10 +489,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -499,10 +500,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Reason of failure"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -510,10 +511,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Quote not found or expired"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="409" label="409: Conflict">
-    
+
     ```json
     {
       "code": 409,
@@ -521,10 +522,10 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Amounts don't match original quote"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="422" label="422: Validation Error">
-    
+
     ```json
     {
       "code": 422,
@@ -538,13 +539,14 @@ POST {{baseUrl}}/zoqq/api/v1/transfer/conversion
       ]
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
 
-# Get Conversion
+## Get Conversion
 
 This API retrieves the status and details of a specific currency conversion.
 
@@ -553,7 +555,6 @@ This API retrieves the status and details of a specific currency conversion.
 ```
 GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
 ```
-
 
   </TabItem>
 </Tabs>
@@ -607,7 +608,7 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
     params = {
         "conversion_id": "conversion_4UTXo2tQnThdZGrMz6FdQR"
     }
-    
+
     headers = {
         "x-api-key": "{{Shared Xapikey By ZOqq}}",
         "x-program-id": "{{BasedOnRequirement}}",
@@ -615,14 +616,14 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
         "x-user-id": "{{Useridentificationkey}}",
         "Authorization": "Bearer {{YOUR_TOKEN}}"
     }
-    
+
     response = requests.get(url, headers=headers, params=params)
     print(response.json())
     ```
-    
+
       </TabItem>
       <TabItem value="java" label="Java">
-    
+
     ```java
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("{{baseUrl}}/zoqq/api/v1/transfer/conversion?conversion_id=conversion_4UTXo2tQnThdZGrMz6FdQR"))
@@ -637,15 +638,15 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
         .send(request, HttpResponse.BodyHandlers.ofString());
     System.out.println(response.body());
     ```
-    
+
       </TabItem>
     </Tabs>
-    
+
     <h3>Response Example</h3>
-    
+
     <Tabs>
       <TabItem value="200" label="200: Success" default>
-    
+
     ```json
     {
       "code": 200,
@@ -666,10 +667,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
       }
     }
     ```
-    
+
       </TabItem>
       <TabItem value="400" label="400: Error">
-    
+
     ```json
     {
       "code": 400,
@@ -677,10 +678,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Reason of failure"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="404" label="404: Not Found">
-    
+
     ```json
     {
       "code": 404,
@@ -688,10 +689,10 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Conversion not found"
     }
     ```
-    
+
       </TabItem>
       <TabItem value="410" label="410: Gone">
-    
+
     ```json
     {
       "code": 410,
@@ -699,8 +700,9 @@ GET {{baseUrl}}/zoqq/api/v1/transfer/conversion
       "message": "Conversion record expired"
     }
     ```
-    
+
       </TabItem>
     </Tabs>
+
   </div>
 </div>
